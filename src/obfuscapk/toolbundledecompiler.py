@@ -18,7 +18,7 @@ class BundleDecompiler(object):
             self.logger.warning(
                 "BundleDecompiler is not yet available on Windows platform"
             )
-            return
+            pass
 
         if "BUNDLE_DECOMPILER_PATH" in os.environ:
             self.bundledecompiler_path: str = os.environ["BUNDLE_DECOMPILER_PATH"]
@@ -27,19 +27,9 @@ class BundleDecompiler(object):
 
         full_bundledecompiler_path = shutil.which(self.bundledecompiler_path)
 
-        # Make sure bundle decompiler is available
-        if not os.path.isfile(full_bundledecompiler_path):
-            raise RuntimeError(
-                'Cannot find BundleDecompiler with executable "{0}"'.format(
-                    full_bundledecompiler_path
-                )
-            )
-
-        # Make sure to use the full path of the executable (needed for cross-platform
-        # compatibility).
-        if full_bundledecompiler_path is None:
-            raise RuntimeError(
-                'Something is wrong with executable "{0}"'.format(
+        if full_bundledecompiler_path is None or not os.path.isfile(full_bundledecompiler_path):
+            self.logger.warning(
+                'Cannot find BundleDecompiler executable "{0}". AAB features will fail if used.'.format(
                     self.bundledecompiler_path
                 )
             )
@@ -228,12 +218,12 @@ class AABSigner(object):
 
         # Make sure to use the full path of the executable (needed for cross-platform
         # compatibility).
-        if full_aabsigner_path is None:
-            raise RuntimeError(
-                'Something is wrong with executable "{0}"'.format(self.aabsigner_path)
-            )
-        else:
-            self.aabsigner_path = full_aabsigner_path
+        if full_aabsigner_path is None or not os.path.isfile(full_aabsigner_path):
+                    self.logger.warning(
+                        'Cannot find BundleDecompiler executable "{0}".'.format(self.aabsigner_path)
+                    )
+                else:
+                    self.aabsigner_path = full_aabsigner_path
 
     def sign(
         self,

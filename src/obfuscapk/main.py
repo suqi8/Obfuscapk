@@ -37,11 +37,12 @@ def check_external_tool_dependencies():
     # used to specify the location of the external tools (make sure they have the
     # execute permission). If there is a problem with any of the executables below,
     # an exception will be thrown by the corresponding constructor.
-    logger.debug("Checking external tool dependencies")
-    Apktool()
-    BundleDecompiler()
-    ApkSigner()
-    Zipalign()
+    #logger.debug("Checking external tool dependencies")
+    #Apktool()
+    #BundleDecompiler()
+    #ApkSigner()
+    #Zipalign()
+    pass
 
 
 def perform_obfuscation(
