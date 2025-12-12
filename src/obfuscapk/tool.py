@@ -26,9 +26,9 @@ class Apktool(object):
         # Make sure to use the full path of the executable (needed for cross-platform
         # compatibility).
         if full_apktool_path is None:
-                     self.logger.warning('Cannot find Apktool: "{0}"'.format(self.apktool_path))
-                else:
-                    self.apktool_path = full_apktool_path
+            self.logger.warning('Cannot find Apktool: "{0}"'.format(self.apktool_path))
+        else:
+            self.apktool_path = full_apktool_path
 
     def decode(
         self, apk_path: str, output_dir_path: str = None, force: bool = False
@@ -205,9 +205,9 @@ class Zipalign(object):
         # Make sure to use the full path of the executable (needed for cross-platform
         # compatibility).
         if full_zipalign_path is None:
-                    self.logger.warning('Cannot find Zipalign: "{0}"'.format(self.zipalign_path))
-                else:
-                    self.zipalign_path = full_zipalign_path
+            self.logger.warning('Cannot find Zipalign: "{0}"'.format(self.zipalign_path))
+        else:
+            self.zipalign_path = full_zipalign_path
 
     def align(self, apk_path: str) -> str:
         # Check if the apk file to align is a valid file.
@@ -273,9 +273,9 @@ class ApkSigner(object):
         # Make sure to use the full path of the executable (needed for cross-platform
         # compatibility).
         if full_apksigner_path is None:
-                    self.logger.warning('Cannot find ApkSigner: "{0}"'.format(self.apksigner_path))
-                else:
-                    self.apksigner_path = full_apksigner_path
+            self.logger.warning('Cannot find ApkSigner: "{0}"'.format(self.apksigner_path))
+        else:
+            self.apksigner_path = full_apksigner_path
 
     def sign(
         self,

@@ -219,11 +219,9 @@ class AABSigner(object):
         # Make sure to use the full path of the executable (needed for cross-platform
         # compatibility).
         if full_aabsigner_path is None or not os.path.isfile(full_aabsigner_path):
-                    self.logger.warning(
-                        'Cannot find BundleDecompiler executable "{0}".'.format(self.aabsigner_path)
-                    )
-                else:
-                    self.aabsigner_path = full_aabsigner_path
+            self.logger.warning('Cannot find BundleDecompiler executable "{0}".'.format(self.aabsigner_path))
+        else:
+            self.aabsigner_path = full_aabsigner_path
 
     def sign(
         self,
