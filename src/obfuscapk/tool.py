@@ -81,16 +81,16 @@ class Apktool(object):
 
         decode_cmd: List[str] = [
             self.apktool_path,
+            "d",
             "--frame-path",
             tempfile.gettempdir(),
-            "d",
             apk_path,
             "-o",
             output_dir_path,
         ]
 
         if force:
-            decode_cmd.insert(4, "--force")
+            decode_cmd.insert(2, "--force")
 
         try:
             self.logger.info(
@@ -143,9 +143,9 @@ class Apktool(object):
 
         build_cmd: List[str] = [
             self.apktool_path,
+            "b",
             "--frame-path",
             tempfile.gettempdir(),
-            "b",
             "--force-all",
             source_dir_path,
             "-o",
