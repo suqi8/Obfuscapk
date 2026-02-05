@@ -152,9 +152,6 @@ class Apktool(object):
             output_apk_path,
         ]
 
-        if use_aapt2:
-            build_cmd.insert(-2, "--use-aapt2")
-
         try:
             self.logger.info('Running build command "{0}"'.format(" ".join(build_cmd)))
             # A new line character is sent as input since newer versions of Apktool
