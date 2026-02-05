@@ -90,7 +90,7 @@ class Apktool(object):
         ]
 
         if force:
-            decode_cmd.insert(2, "--force")
+            decode_cmd.insert(2, "-f")
 
         try:
             self.logger.info(
@@ -146,7 +146,7 @@ class Apktool(object):
             "b",
             "--frame-path",
             tempfile.gettempdir(),
-            "--force-all",
+            "-f",
             source_dir_path,
             "-o",
             output_apk_path,
